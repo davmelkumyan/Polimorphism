@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+
+  <style type="text/css">
+  	#game {
+	width: 150px;
+	height: 150px;
+	background: black;
+}
+
+.block {
+	width: 50px;
+	height: 50px;
+	float: left;
+	border: 1px solid white;
+	box-sizing: border-box;
+	line-height: 50px;
+	text-align: center;
+	font-size: 40px;
+	text-transform: uppercase;
+	color: white;
+}
+  </style>
+
+    <div id="game"></div>
+
+    <script>
+ window.onload = function(){
+	for (var i=0; i<9; i++) {
+		document.getElementById('game').innerHTML+='<div class="block"></div>';
+	}
+
+	var turn = 0;
+
+	document.getElementById('game').onclick = function(event){
+		console.log(event);
+		if (event.target.className == 'block'){
+			if (turn%2==0) {
+				event.target.innerHTML = 'x';
+			}
+			else {
+				event.target.innerHTML = '0';
+			}
+			turn++;
+			checkWinner();
+		}
+	}
+
+	function checkWinner() {
+		var blocks = document.getElementsByClassName('block');
+		console.log(blocks);
+		if (blocks[0].innerHTML=='x' && blocks[1].innerHTML=='x' && blocks[2].innerHTML=='x') alert('Winner is X');
+		if (blocks[3].innerHTML=='x' && blocks[4].innerHTML=='x' && blocks[5].innerHTML=='x') alert('Winner is X');
+		if (blocks[6].innerHTML=='x' && blocks[7].innerHTML=='x' && blocks[8].innerHTML=='x') alert('Winner is X');
+		if (blocks[0].innerHTML=='x' && blocks[3].innerHTML=='x' && blocks[6].innerHTML=='x') alert('Winner is X');
+		if (blocks[1].innerHTML=='x' && blocks[4].innerHTML=='x' && blocks[7].innerHTML=='x') alert('Winner is X');
+		if (blocks[2].innerHTML=='x' && blocks[5].innerHTML=='x' && blocks[8].innerHTML=='x') alert('Winner is X');
+		if (blocks[0].innerHTML=='x' && blocks[4].innerHTML=='x' && blocks[8].innerHTML=='x') alert('Winner is X');
+		if (blocks[2].innerHTML=='x' && blocks[4].innerHTML=='x' && blocks[6].innerHTML=='x') alert('Winner is X');
+		
+		if (blocks[0].innerHTML=='0' && blocks[1].innerHTML=='0' && blocks[2].innerHTML=='0') alert('Winner is O');
+		if (blocks[3].innerHTML=='0' && blocks[4].innerHTML=='0' && blocks[5].innerHTML=='0') alert('Winner is O');
+		if (blocks[6].innerHTML=='0' && blocks[7].innerHTML=='0' && blocks[8].innerHTML=='0') alert('Winner is O');
+		if (blocks[0].innerHTML=='0' && blocks[3].innerHTML=='0' && blocks[6].innerHTML=='0') alert('Winner is O');
+		if (blocks[1].innerHTML=='0' && blocks[4].innerHTML=='0' && blocks[7].innerHTML=='0') alert('Winner is O');
+		if (blocks[2].innerHTML=='0' && blocks[5].innerHTML=='0' && blocks[8].innerHTML=='0') alert('Winner is O');
+		if (blocks[0].innerHTML=='0' && blocks[4].innerHTML=='0' && blocks[8].innerHTML=='0') alert('Winner is O');
+		if (blocks[2].innerHTML=='0' && blocks[4].innerHTML=='0' && blocks[6].innerHTML=='0') alert('Winner is 0');
+	}
+
+}
+
+    </script>
+  </body>
+</html>
